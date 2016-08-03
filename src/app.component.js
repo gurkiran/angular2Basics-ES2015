@@ -3,7 +3,7 @@
   var QuoteService = app.QuoteService;
   var RandomQuoteComponent = app.RandomQuoteComponent;
 
-  app.AppComponent = Component({
+  @Component({
     selector: 'my-app',
     directives: [RandomQuoteComponent],
     providers: [QuoteService],
@@ -12,10 +12,9 @@
       <p><random-quote></random-quote></p>
       `
   })
-  .Class({
-    constructor: function AppComponent() {
-      // empty
-    }
-  });
 
+  class AppComponent { }
+
+  app.AppComponent = AppComponent;
+  
 })(window.app || (window.app = {}));

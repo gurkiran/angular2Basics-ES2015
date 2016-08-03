@@ -1,29 +1,43 @@
 "use strict";
 
-(function (app) {
-  var Class = ng.core.Class;
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-  app.QuoteService = Class({
-    constructor: function QuoteService() {
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+(function (app) {
+  var QuoteService = function () {
+    function QuoteService() {
+      _classCallCheck(this, QuoteService);
+
       this.quotes = quotes;
-    },
-    getRandomQuote: function getRandomQuote() {
-      var randomIndex = Math.floor(Math.random() * this.quotes.length);
-      return this.quotes[randomIndex];
-    },
-    generateRandomQuotes: function generateRandomQuotes(count, delay, callback) {
-      var self = this;
-      function generate(remainingCount) {
-        callback(self.getRandomQuote());
-        if (remainingCount > 1) {
-          setTimeout(function () {
-            return generate(remainingCount - 1);
-          }, delay);
-        }
-      }
-      generate(count);
     }
-  });
+
+    _createClass(QuoteService, [{
+      key: "getRandomQuote",
+      value: function getRandomQuote() {
+        var randomIndex = Math.floor(Math.random() * this.quotes.length);
+        return this.quotes[randomIndex];
+      }
+    }, {
+      key: "generateRandomQuotes",
+      value: function generateRandomQuotes(count, delay, callback) {
+        var self = this;
+        function generate(remainingCount) {
+          callback(self.getRandomQuote());
+          if (remainingCount > 1) {
+            setTimeout(function () {
+              return generate(remainingCount - 1);
+            }, delay);
+          }
+        }
+        generate(count);
+      }
+    }]);
+
+    return QuoteService;
+  }();
+
+  app.QuoteService = QuoteService;
 
   var quotes = [{
     "line": "Debugging is twice as hard as writing the code in the first place. Therefore, if you write the code as cleverly as possible, you are, by definition, not smart enough to debug it.",

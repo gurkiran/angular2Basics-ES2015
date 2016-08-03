@@ -1,15 +1,15 @@
 (function(app) {
-  var Class = ng.core.Class;
 
-  app.QuoteService = Class({
-    constructor: function QuoteService() {
+  class QuoteService {
+
+    constructor() {
       this.quotes = quotes;
-    },
-    getRandomQuote: function() {
+    }
+    getRandomQuote() {
       const randomIndex = Math.floor(Math.random() * this.quotes.length);
       return this.quotes[randomIndex];
-    },
-    generateRandomQuotes: function(count, delay, callback) {
+    }
+    generateRandomQuotes(count, delay, callback) {
       const self = this;
       function generate(remainingCount) {
         callback(self.getRandomQuote());
@@ -19,7 +19,10 @@
       }
       generate(count);
     }
-  });
+  }
+
+  app.QuoteService = QuoteService;
+
 
   const quotes = [
     {
