@@ -6,24 +6,22 @@
       this.quotes = quotes;
     },
     getRandomQuote: function() {
-      var randomIndex = Math.floor(Math.random() * this.quotes.length);
+      const randomIndex = Math.floor(Math.random() * this.quotes.length);
       return this.quotes[randomIndex];
     },
     generateRandomQuotes: function(count, delay, callback) {
-      var self = this;
+      const self = this;
       function generate(remainingCount) {
         callback(self.getRandomQuote());
         if (remainingCount > 1) {
-          setTimeout(function() {
-            generate(remainingCount - 1);
-          }, delay);
+          setTimeout( () => generate(remainingCount - 1), delay);
         }
       }
       generate(count);
     }
   });
 
-  var quotes = [
+  const quotes = [
     {
       "line": "Debugging is twice as hard as writing the code in the first place. Therefore, if you write the code as cleverly as possible, you are, by definition, not smart enough to debug it.",
       "author": "Brian W. Kernighan"
