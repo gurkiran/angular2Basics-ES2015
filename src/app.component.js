@@ -1,20 +1,16 @@
-(function(app) {
-  var Component = ng.core.Component;
-  var QuoteService = app.QuoteService;
-  var RandomQuoteComponent = app.RandomQuoteComponent;
+import { Component } from '@angular/core';
+import { QuoteService } from './quote.service';
+import { RandomQuoteComponent } from './random-quote.component';
 
-  @Component({
-    selector: 'my-app',
-    directives: [RandomQuoteComponent],
-    providers: [QuoteService],
-    template: `
-      <h1>Random Quote !!!</h1>
-      <p><random-quote></random-quote></p>
-      `
-  })
 
-  class AppComponent { }
+@Component({
+  selector: 'my-app',
+  directives: [RandomQuoteComponent],
+  providers: [QuoteService],
+  template: `
+    <h1>Random Quote !!!</h1>
+    <p><random-quote></random-quote></p>
+    `
+})
 
-  app.AppComponent = AppComponent;
-  
-})(window.app || (window.app = {}));
+export class AppComponent { }
